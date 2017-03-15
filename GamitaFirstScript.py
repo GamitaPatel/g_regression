@@ -2,15 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
 import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 import datetime
 
 class SouthernRegTest_1(unittest.TestCase):
-    'First regression test from southern'
-
     def setUp(self):
         self.driver = webdriver.Chrome()
 
@@ -18,16 +13,16 @@ class SouthernRegTest_1(unittest.TestCase):
 
         driver = self.driver
         driver.maximize_window()
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(5)
         driver.get("https://southern.stage.otrl.io/search")
         print("Opening Southern Booking Engine")
 
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div[2]/nav/a[3]").click()
         print("Clicked on other tickets")
-        #time.sleep(2)
+        time.sleep(2)
         driver.find_element_by_xpath("//section[@class='booking__section other-ticket-options']/button").click()
         print("Clicked on Daysave")
-        #time.sleep(3)
+        time.sleep(3)
         enter_origin_station = "Brighton"
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div[1]/section[1]/span/label/div/input").send_keys(enter_origin_station)
         time.sleep(2)
